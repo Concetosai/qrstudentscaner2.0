@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Register New Student</h1>
+<form method="POST">
+    <p>
+        <label>Student ID:</label><br>
+        <input type="text" name="student_id" required>
+    </p>
+    <p>
+        <label>Name:</label><br>
+        <input type="text" name="name" required>
+    </p>
+    <p>
+        <input type="submit" value="Register" class="button">
+    </p>
+</form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Students List</h1>
+<table>
+    <tr>
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>QR Code</th>
+    </tr>
+    {% for id, name in students.items() %}
+    <tr>
+        <td>{{ id }}</td>
+        <td>{{ name }}</td>
+        <td><img src="{{ url_for('static', filename='qr_codes/' + id + '.png') }}" width="100"></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Student Registration</h2>
+<form method="POST">
+    <div>
+        <label>Student ID:</label>
+        <input type="text" name="student_id" required>
+    </div>
+    <div>
+        <label>Name:</label>
+        <input type="text" name="name" required>
+    </div>
+    <button type="submit" class="button">Register</button>
+</form>
+<a href="{{ url_for('home') }}" class="button">Back to Home</a>
+{% endblock %}
