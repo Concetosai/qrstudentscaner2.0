@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>QR Code for {{ student.name }}</h2>
+<div style="text-align: center;">
+    <img src="/{{ student.qr_code }}" alt="QR Code" style="max-width: 300px; width: 100%;">
+</div>
+<a href="{{ url_for('home') }}" class="button">Back to Home</a>
+{% endblock %}

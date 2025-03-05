@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Attendance Log</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Timestamp</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in attendance_log %}
+        <tr>
+            <td>{{ entry.student_id }}</td>
+            <td>{{ entry.name }}</td>
+            <td>{{ entry.type.title() }}</td>
+            <td>{{ entry.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('home') }}" class="button">Back to Home</a>
+{% endblock %}

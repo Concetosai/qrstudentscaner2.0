@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School Attendance System</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        .button { 
+            display: inline-block;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #4CAF50; color: white; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('home') }}" class="button">Home</a>
+    </nav>
+    {% block content %}{% endblock %}
+</body>
+</html>

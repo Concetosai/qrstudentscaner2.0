@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School Attendance System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <style>
+        * { box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 15px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 16px;
+            border: none;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            font-size: 14px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        h1, h2 {
+            text-align: center;
+            margin: 15px 0;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        #qr-reader {
+            width: 100% !important;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        #status {
+            text-align: center;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 4px;
+            background: #f0f0f0;
+        }
+        .support-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 16px rgba(37,211,102,0.5);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            }
+        }
+        .support-text {
+            position: fixed;
+            bottom: 85px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 1000;
+        }
+        .support-button:hover {
+            background-color: #128C7E;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="support-text">Need help? Click here!</div>
+        <a href="https://wa.me/528332892730?text=Hola,%20necesito%20ayuda%20con%20el%20sistema%20de%20asistencia" 
+           class="support-button" 
+           target="_blank">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.917 1.049 5.591 2.787 7.682L1.3 23.7l4.118-1.487C7.556 23.346 9.71 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zM8.392 7.654c.166-.089.301-.089.399-.089.166 0 .332.089.432.266.216.31 1.059 1.241 1.059 1.241s.143.177.143.354c0 .177-.089.354-.255.531-.089.089-.166.177-.255.266-.166.177-.216.266-.216.399 0 .133.216.443.443.797.387.576.774 1.063 1.328 1.461.166.089.332.133.443.133.216 0 .387-.177.498-.354l.387-.487c.143-.177.332-.266.498-.266.166 0 .332.089.498.177l1.615.931c.166.089.255.266.255.443 0 .62-.862 1.196-1.06 1.284-.443.177-1.059.266-1.68.089-.798-.266-2.291-.931-3.528-2.168-1.237-1.237-1.902-2.73-2.168-3.528-.177-.62-.089-1.237.089-1.68.088-.198.664-1.059 1.284-1.059z"/>
+        </svg>
+    </a>
+</body>
+</html>

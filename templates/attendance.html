@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Attendance Log</h1>
+<table>
+    <tr>
+        <th>Date/Time</th>
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Type</th>
+    </tr>
+    {% for entry in attendance %}
+    <tr>
+        <td>{{ entry.timestamp }}</td>
+        <td>{{ entry.student_id }}</td>
+        <td>{{ entry.name }}</td>
+        <td style="color: {% if entry.type == 'IN' %}green{% else %}red{% endif %}">
+            {{ entry.type }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

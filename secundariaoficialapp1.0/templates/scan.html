@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Scan QR Code</h2>
+<div id="reader-container">
+    <div id="qr-reader"></div>
+    <div id="qr-reader-results"></div>
+</div>
+<div id="status" style="color: #721c24; background-color: #f8d7da; padding: 10px; margin: 10px 0; border-radius: 4px;"></div>
+<div style="text-align: center; margin: 10px 0;">
+    <p>If camera doesn't start:</p>
+    <ol style="text-align: left; display: inline-block;">
+        <li>Check camera permissions in your browser settings</li>
+        <li>Allow camera access when prompted</li>
+        <li>Refresh the page</li>
+    </ol>
+</div>
+<a href="{{ url_for('home') }}" class="button">Back to Home</a>
+
+<script src="https://unpkg.com/html5-qrcode@2.3.8"></script>
+<script>
+    function onScanSuccess(decodedText, decodedResult) {
+        document.getElementById('status').innerHTML = `Code scanned: ${decodedText}`;
+        
+        fetch('/log_attendance', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({student_id: decodedText})
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('status').innerHTML = 
+                data.status === 'success' ? data.message : 'Error: ' + data.message;
+        });
+    }
+
+    const html5QrCode = new Html5Qrcode("qr-reader");
+    const config = {
+        fps: 30,
+        qrbox: { width: 250, height: 250 },
+        aspectRatio: 1.0
+    };
+
+    html5QrCode.start(
+        { facingMode: "environment" },
+        config,
+        onScanSuccess
+    ).catch((err) => {
+        document.getElementById('status').innerHTML = 
+            `Starting Error: ${err}. Please make sure camera is allowed.`;
+    });
+</script>
+{% endblock %}
