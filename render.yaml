@@ -1,11 +1,11 @@
 services:
-    - type: web
-      name: attendance-app
-      env: python
-      buildCommand: pip install -r requirements.txt
-      startCommand: gunicorn --chdir /opt/render/project/src wsgi:app --bind=0.0.0.0:$PORT --log-file=-
-      envVars:
-        - key: PYTHON_VERSION
-          value: "3.11.11"
+  - type: web
+    name: attendance-app
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn wsgi:app --bind=0.0.0.0:$PORT --log-file=-
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.11"
         - key: PORT
           value: "8000"
