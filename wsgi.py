@@ -1,8 +1,4 @@
-import sys
-path = '/home/yourusername/secundariaoficialapp1.0'
-if path not in sys.path:
-    sys.path.append(path)
-
+import os
 from app import app
 
 if __name__ == "__main__":
